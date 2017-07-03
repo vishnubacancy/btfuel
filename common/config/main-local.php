@@ -3,9 +3,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=btfuel',
-            'username' => 'root',
-            'password' => 'rootuser',
+            'dsn' => 'mysql:host=localhost;dbname=bacancyt_btfuel',
+            'username' => 'bacancyt_saumil',
+            'password' => '1GoItHSh[k${',
             'charset' => 'utf8',
         ],
         'mailer' => [
