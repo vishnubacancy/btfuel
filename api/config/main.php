@@ -43,7 +43,7 @@ return [
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['v1/price' => 'v1/petrol'],
+                    'controller' => ['v1/price' => 'v1/petrol','v1/getstate'=>'v1/state','v1/getcity'=>'v1/city'],
                     
                 ]
             ],

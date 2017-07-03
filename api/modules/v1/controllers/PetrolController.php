@@ -22,7 +22,7 @@ class PetrolController extends ActiveController {
     public function actionIndex($state = '', $city = '', $date = '') {
 
         $date = (!empty($date)) ? date('Y-m-d', strtotime($date)) : '';
-        $search = ['state_code' => $state, 'city' => $city, 'updated' => $date];
+        $search = ['state' => $state, 'city' => $city, 'updated' => $date];
         $search = array_filter($search);
 
         $modelClass = $this->modelClass;
@@ -58,7 +58,7 @@ class PetrolController extends ActiveController {
 
         return ['status'=>200,'message'=>'Data found.','data'=>$response];
     }
-
+    
     public function search_array($needle, $haystack) {
         if (in_array($needle, $haystack)) {
             return true;
