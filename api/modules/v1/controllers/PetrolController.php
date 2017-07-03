@@ -35,9 +35,11 @@ class PetrolController extends ActiveController {
             $stateCode=$value->state_code;
             $response['petrol'][$value->type][] = ['state_code'=>$value->state_code,'city' => $value->city, 'price' => $value->price, 'change' => $value->change_diff,'updated'=>$value->updated];
         }
-        if ($city !='' && $state == '' && !empty($response)) {
+        
+        if(!array_key_exists("iocl",$response['petrol'])){
             $modelIocl = $modelClass::find()->where(['state_code'=>$stateCode,'type'=>'iocl'])->one();
             $response['petrol']['iocl'][] = ['state_code'=>$modelIocl->state_code,'city' => $modelIocl->city, 'price' => $modelIocl->price, 'change' => $modelIocl->change_diff,'updated'=>$value->updated];
+            
         }
 
         //diesel
@@ -46,7 +48,8 @@ class PetrolController extends ActiveController {
             $stateCode=$value->state_code;
             $response['diesel'][$value->type][] = ['state_code'=>$value->state_code,'city' => $value->city, 'price' => $value->price, 'change' => $value->change_diff,'updated'=>$value->updated];
         }
-        if ($city !='' && $state == '' && !empty($response)) {
+        
+        if(!array_key_exists("iocl",$response['diesel'])){
             $modelIocl = \api\modules\v1\models\Diesel::find()->where(['state_code'=>$stateCode,'type'=>'iocl'])->one();
             $response['diesel']['iocl'][] = ['state_code'=>$modelIocl->state_code,'city' => $modelIocl->city, 'price' => $modelIocl->price, 'change' => $modelIocl->change_diff,'updated'=>$value->updated];
         }
