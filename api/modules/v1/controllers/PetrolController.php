@@ -54,7 +54,7 @@ class PetrolController extends ActiveController {
         }
 
         if (empty($response))
-            return ['status' => 404, 'message' => 'Data not found.'];
+            return ['status' => 400, 'message' => 'Data not found.'];
 
         return ['status'=>200,'message'=>'Data found.','data'=>$response];
     }
