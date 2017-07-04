@@ -51,9 +51,9 @@ class PetrolController extends ActiveController {
         }
 
         if (!$this->search_array("iocl", $response) && !empty($response)) {
-            $modelIocl = \api\modules\v1\models\Diesel::find()->where(['state_code' => $stateCode, 'type' => 'iocl'])->one();
-            if ($modelIocl !== null) {
-                $response['diesel'][] = ['state_code' => $modelIocl->state_code, 'city' => $modelIocl->city, 'price' => $modelIocl->price, 'change' => $modelIocl->change_diff, 'updated' => $value->updated, 'company' => 'iocl'];
+            $modelIoclDiesel = \api\modules\v1\models\Diesel::find()->where(['state_code' => $stateCode, 'type' => 'iocl'])->one();
+            if ($modelIoclDiesel !== null) {
+                $response['diesel'][] = ['state_code' => $modelIoclDiesel->state_code, 'city' => $modelIoclDiesel->city, 'price' => $modelIoclDiesel->price, 'change' => $modelIoclDiesel->change_diff, 'updated' => $value->updated, 'company' => 'iocl'];
             }
         }
 
