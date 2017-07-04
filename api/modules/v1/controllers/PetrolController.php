@@ -61,7 +61,7 @@ class PetrolController extends ActiveController {
             return ['status' => 400, 'message' => 'Data not found.'];
 
         return ['status' => 200, 'message' => 'Data found.', 'data' => $response];
-    }
+    } 
 
     public function search_array($needle, $haystack) {
         if (in_array($needle, $haystack)) {
