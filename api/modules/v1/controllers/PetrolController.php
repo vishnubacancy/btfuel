@@ -11,7 +11,7 @@ use yii\rest\ActiveController;
  */
 class PetrolController extends ActiveController {
 
-    public $modelClass = 'api\modules\v1\models\Petrol';
+    public $modelClass = 'api\modules\v1\models\Petrol'; 
 
     public function actions() {
         $actions = parent::actions();
