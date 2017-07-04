@@ -25,8 +25,10 @@ class FuelpriceController extends Controller {
         foreach ($stateData as $state_code => $state) {
 
             $data = $this->sendcurl('p', $state_code);
-            
-            if($data == '0') {continue;}
+
+            if ($data == '0') {
+                continue;
+            }
             $data = json_decode($data);
 
             $updated = date('Y-m-d', strtotime($data->updated));
@@ -61,13 +63,15 @@ class FuelpriceController extends Controller {
                 }
             }
         }
-        
+
         //diesel
         foreach ($stateData as $state_code => $state) {
 
             $data = $this->sendcurl('d', $state_code);
-            
-            if($data == '0') {continue;}
+
+            if ($data == '0') {
+                continue;
+            }
             $data = json_decode($data);
 
             $updated = date('Y-m-d', strtotime($data->updated));
@@ -102,6 +106,14 @@ class FuelpriceController extends Controller {
                 }
             }
         }
+
+        Yii::$app->mailer->compose()
+                ->setFrom('cron@bacancytechnology.com')
+                ->setTo('vishnu.patel@bacancytechnology.com')
+                ->setSubject('cron status')
+                ->setHtmlBody('<b>cron run successfully</b>')
+                ->setTextBody('cron run successfully')
+                ->send();
     }
 
     public function sendcurl($fuel, $state) {
